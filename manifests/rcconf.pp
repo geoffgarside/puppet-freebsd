@@ -1,4 +1,5 @@
 class freebsd::rcconf {
+  include freebsd::params
 
   file { $::freebsd::params::rc_conf:
     ensure  => 'file',

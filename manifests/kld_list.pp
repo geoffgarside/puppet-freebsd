@@ -1,4 +1,5 @@
 class freebsd::kld_list {
+  include freebsd::params
 
   file { $::freebsd::params::kld_conf_d:
     ensure  => file,

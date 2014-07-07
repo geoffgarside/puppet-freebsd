@@ -1,5 +1,6 @@
 class freebsd::klds {
   require stdlib
+  include freebsd::params
 
   $default_modules  = $::freebsd::params::kernel_modules
   $hiera_modules    = hiera('freebsd::kernel_modules', [])

@@ -1,4 +1,5 @@
 class freebsd::mounts {
+  include freebsd::params
 
   mount { $::freebsd::params::mount_dev_fd:
     ensure  => 'mounted',

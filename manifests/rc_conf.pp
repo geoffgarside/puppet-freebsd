@@ -1,6 +1,7 @@
 define freebsd::rc_conf (
   $ensure = 'present',
-  $value  = undef,
+  $key    = $title,
+  $value  = [],
 ) {
   include freebsd
 
@@ -20,7 +21,11 @@ define freebsd::rc_conf (
       $_value = 'NO'
     }
     default: {
-      $_value = $value
+      if is_array($value) {
+        $_value = join($value, ' ')
+      } else {
+        $_value = $value
+      }
     }
   }
 
