@@ -24,11 +24,12 @@ class freebsd::linprocfs {
     group   => 'wheel',
   } ->
   mount { '/usr/compat/linux/proc':
-    ensure  => 'mounted',
-    device  => 'linproc',
-    fstype  => 'linprocfs',
-    options => 'rw,late',
-    dump    => '0',
-    pass    => '0',
+    ensure   => 'mounted',
+    device   => 'linproc',
+    fstype   => 'linprocfs',
+    options  => 'rw,late',
+    dump     => '0',
+    pass     => '0',
+    remounts => true,
   }
 }
