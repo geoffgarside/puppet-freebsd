@@ -1,3 +1,6 @@
+# == Class: freebsd::kld_list
+#
+# Sets up required items for freebsd::kernel_module
 class freebsd::kld_list {
   include freebsd::params
 

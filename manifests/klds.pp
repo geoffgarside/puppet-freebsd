@@ -1,3 +1,8 @@
+# == Class: freebsd::klds
+#
+# Manages default kernel modules, installs kernel
+# modules defined in +freebsd::kernel_modules+
+# hiera key.
 class freebsd::klds {
   require stdlib
   include freebsd::params

@@ -1,3 +1,6 @@
+# == Class: freebsd::linprocfs
+#
+# Configures the linux /proc file system.
 class freebsd::linprocfs {
   file { '/compat':
     ensure => 'link',

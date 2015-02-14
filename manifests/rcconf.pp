@@ -1,3 +1,7 @@
+# == Class: freebsd::rcconf
+#
+# Manages permissions on /etc/rc.conf and
+# the /etc/rc.conf.d directory.
 class freebsd::rcconf {
   include freebsd::params
 

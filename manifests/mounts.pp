@@ -1,3 +1,6 @@
+# == Class: freebsd::mounts
+#
+# Mounts +/dev/fd+ and +/proc+ file systems.
 class freebsd::mounts {
   include freebsd::params
 

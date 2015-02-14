@@ -1,3 +1,20 @@
+# == Resource: freebsd::rc_conf
+#
+# Manage variables in /etc/rc.conf
+#
+# == Parameters:
+#
+# [*ensure*]
+#   Ensure presence or absence of the variable.
+#   Default 'present'.
+#
+# [*key*]
+#   Variable name.
+#
+# [*value*]
+#   Variable value.
+#   Booleans, yes/no, on/off are converted to YES/NO.
+#   Arrays are joined by spaces.
 define freebsd::rc_conf (
   $ensure = 'present',
   $key    = $title,

@@ -1,3 +1,15 @@
+# == Resource: freebsd::kernel_module
+#
+# Manage kernel modules
+#
+# == Parameters:
+#
+# [*kld*]
+#   Name of the kernel module to manage.
+#
+# [*ensure*]
+#   Ensure the state of the kernel module.
+#   Default: 'present'.
 define freebsd::kernel_module (
   $kld    = $title,
   $ensure = 'present'

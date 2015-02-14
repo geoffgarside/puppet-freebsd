@@ -1,3 +1,4 @@
+# == Class: freebsd::params
 class freebsd::params {
   $mount_dev_fd = '/dev/fd'
   $mount_proc   = '/proc'
