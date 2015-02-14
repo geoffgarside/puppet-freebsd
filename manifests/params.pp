@@ -10,7 +10,6 @@ class freebsd::params {
   $restart_kld  = 'refresh kld'
 
   $kernel_modules = [
-    'aesni',
     'coretemp',
   ]
 }
