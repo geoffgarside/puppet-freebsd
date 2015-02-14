@@ -10,16 +10,14 @@ class freebsd::klds {
   require stdlib
   include freebsd::params
 
-  $_default  = $::freebsd::params::kernel_modules
-  $_hiera    = hiera('freebsd::kernel_modules', [])
-
   if $::cpu_supports_aesni {
-    $_aesni  = ['aesni']
+    $_default = concat($::freebsd::params::kernel_modules, 'aesni')
   } else {
-    $_aesni  = []
+    $_default = $::freebsd::params::kernel_modules
   }
 
-  $_modules  = concat($_default, $_hiera, $_aesni)
+  $_hiera    = hiera('freebsd::kernel_modules', [])
+  $_modules  = concat($_default, $_hiera)
   $modules   = unique(sort($_modules))
 
   freebsd::kernel_module { $modules:
