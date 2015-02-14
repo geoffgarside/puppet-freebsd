@@ -21,10 +21,10 @@ class freebsd::linprocfs {
     group  => 'wheel',
   } ->
   file { '/usr/compat/linux/proc':
-    ensure  => 'directory',
-    mode    => '0555',
-    owner   => 'root',
-    group   => 'wheel',
+    ensure => 'directory',
+    mode   => '0555',
+    owner  => 'root',
+    group  => 'wheel',
   } ->
   mount { '/usr/compat/linux/proc':
     ensure   => 'mounted',

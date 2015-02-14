@@ -5,10 +5,10 @@ class freebsd::kld_list {
   include freebsd::params
 
   file { $::freebsd::params::kld_conf_d:
-    ensure  => file,
-    mode    => '0640',
-    owner   => 'root',
-    group   => 'wheel',
+    ensure => file,
+    mode   => '0640',
+    owner  => 'root',
+    group  => 'wheel',
   }
 
   exec { $::freebsd::params::restart_kld:

@@ -31,10 +31,10 @@ define freebsd::rc_conf (
   }
 
   case $value {
-    true, 'true', 'yes', 'YES', 'ON': {
+    true, 'yes', 'YES', 'on', 'ON': {
       $_value = 'YES'
     }
-    false, 'false', 'no', 'NO', 'OFF': {
+    false, 'no', 'NO', 'off', 'OFF': {
       $_value = 'NO'
     }
     default: {
