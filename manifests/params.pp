@@ -11,11 +11,6 @@ class freebsd::params {
 
   $kernel_modules = [
     'aesni',
-    'accf_http',
-    'accf_data',
-    'accf_dns',
-    'aio',
-    'cc_htcp',
     'coretemp',
   ]
 }
