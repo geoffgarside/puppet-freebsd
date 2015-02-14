@@ -6,7 +6,6 @@ class freebsd::params {
   $rc_conf      = '/etc/rc.conf'
   $rc_conf_d    = '/etc/rc.conf.d'
 
-  $kld_list     = "${rc_conf_d}/kld_list"
   $kld_conf_d   = "${rc_conf_d}/kld"
   $restart_kld  = 'refresh kld'
 
