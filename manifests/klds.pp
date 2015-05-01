@@ -29,7 +29,7 @@ class freebsd::klds {
     $_default = $::freebsd::params::kernel_modules
   }
 
-  $_hiera    = hiera('freebsd::kernel_modules', [])
+  $_hiera    = hiera_array('freebsd::kernel_modules', [])
   $_modules  = concat($_default, $_hiera)
   $modules   = unique(sort($_modules))
 
