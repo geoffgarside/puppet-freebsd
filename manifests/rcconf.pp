@@ -1,7 +1,20 @@
 # == Class: freebsd::rcconf
 #
-# Manages permissions on /etc/rc.conf and
+# Manages permissions on /etc/rc.conf file and
 # the /etc/rc.conf.d directory.
+#
+# === Examples
+#
+#  include freebsd::rcconf
+#
+# === Authors
+#
+# Geoff Garside <puppet@geoffgarside.co.uk>
+#
+# === Copyright
+#
+# Copyright 2014 Geoff Garside, unless otherwise noted.
+#
 class freebsd::rcconf {
   include freebsd::params
 

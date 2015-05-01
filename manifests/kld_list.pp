@@ -1,6 +1,19 @@
 # == Class: freebsd::kld_list
 #
 # Sets up required items for freebsd::kernel_module
+#
+# === Examples
+#
+#  include freebsd::kld_list
+#
+# === Authors
+#
+# Geoff Garside <puppet@geoffgarside.co.uk>
+#
+# === Copyright
+#
+# Copyright 2014 Geoff Garside, unless otherwise noted.
+#
 class freebsd::kld_list {
   include freebsd::params
 

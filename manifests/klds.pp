@@ -6,6 +6,19 @@
 #
 # Installs the aesni kernel module if the AESNI
 # CPU feature is detected.
+#
+# === Examples
+#
+#  include freebsd::klds
+#
+# === Authors
+#
+# Geoff Garside <puppet@geoffgarside.co.uk>
+#
+# === Copyright
+#
+# Copyright 2014 Geoff Garside, unless otherwise noted.
+#
 class freebsd::klds {
   require stdlib
   include freebsd::params

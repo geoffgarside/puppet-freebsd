@@ -1,6 +1,19 @@
 # == Class: freebsd::mounts
 #
 # Mounts +/dev/fd+ and +/proc+ file systems.
+#
+# === Examples
+#
+#  include freebsd::mounts
+#
+# === Authors
+#
+# Geoff Garside <puppet@geoffgarside.co.uk>
+#
+# === Copyright
+#
+# Copyright 2014 Geoff Garside, unless otherwise noted.
+#
 class freebsd::mounts {
   include freebsd::params
 
