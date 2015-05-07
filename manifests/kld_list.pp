@@ -15,7 +15,7 @@
 # Copyright 2014 Geoff Garside, unless otherwise noted.
 #
 class freebsd::kld_list {
-  include freebsd::params
+  include ::freebsd::params
 
   file { $::freebsd::params::kld_conf_d:
     ensure => file,

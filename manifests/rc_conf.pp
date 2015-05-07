@@ -20,7 +20,7 @@ define freebsd::rc_conf (
   $key    = $title,
   $value  = [],
 ) {
-  include freebsd
+  include ::freebsd
 
   $rc_conf = $::freebsd::params::rc_conf
 

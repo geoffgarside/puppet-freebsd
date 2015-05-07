@@ -15,7 +15,7 @@
 # Copyright 2014 Geoff Garside, unless otherwise noted.
 #
 class freebsd::mounts {
-  include freebsd::params
+  include ::freebsd::params
 
   mount { $::freebsd::params::mount_dev_fd:
     ensure   => 'mounted',

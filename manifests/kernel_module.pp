@@ -15,7 +15,7 @@ define freebsd::kernel_module (
   $ensure = 'present'
 ) {
   require stdlib
-  include freebsd
+  include ::freebsd
 
   file_line { "kld_list-${kld}":
     ensure => $ensure,

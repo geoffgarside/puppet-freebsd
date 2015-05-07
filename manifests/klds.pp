@@ -21,7 +21,7 @@
 #
 class freebsd::klds {
   require stdlib
-  include freebsd::params
+  include ::freebsd::params
 
   if $::cpu_supports_aesni {
     $_default = concat($::freebsd::params::kernel_modules, 'aesni')

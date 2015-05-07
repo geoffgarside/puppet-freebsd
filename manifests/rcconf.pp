@@ -16,7 +16,7 @@
 # Copyright 2014 Geoff Garside, unless otherwise noted.
 #
 class freebsd::rcconf {
-  include freebsd::params
+  include ::freebsd::params
 
   file { $::freebsd::params::rc_conf:
     ensure  => 'file',
