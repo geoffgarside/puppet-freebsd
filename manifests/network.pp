@@ -31,6 +31,7 @@ class freebsd::network (
   $ipv6_gateway_enable = undef,
 ) {
   include ::stdlib
+  include ::freebsd::params
 
   # Set a default router if we have one, don't override if undef
   if $defaultrouter {
@@ -59,8 +60,9 @@ class freebsd::network (
     'ipv6_gateway_enable': value => $ipv6_gateway_enable;
   }
 
-  exec { 'netif cloneup':
-    command     => '/usr/sbin/service netif cloneup',
+  exec { $::freebsd::params::netif_cloneup:
+    command     => 'service netif cloneup',
+    path        => ['/bin', '/sbin', '/usr/bin', '/usr/sbin'],
     refreshonly => true,
   }
 }

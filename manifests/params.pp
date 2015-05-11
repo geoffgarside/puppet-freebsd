@@ -17,6 +17,7 @@ class freebsd::params {
   # Notify Exec Names
   $restart_kld  = 'refresh kld'
   $restart_sysctl = 'reload sysctl'
+  $netif_cloneup  = 'netif cloneup'
 
   # Init Parameters
   $mount_devfd     = true
