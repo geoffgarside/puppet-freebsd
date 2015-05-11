@@ -1,4 +1,4 @@
-# == Resource: freebsd::kernel_module
+# == Resource: freebsd::kld
 #
 # Manage kernel modules
 #
@@ -10,8 +10,8 @@
 # [*ensure*]
 #   Ensure the state of the kernel module.
 #   Default: 'present'.
-define freebsd::kernel_module (
-  $kld    = $title,
+define freebsd::kld (
+  $kld    = $name,
   $ensure = 'present'
 ) {
   include ::stdlib

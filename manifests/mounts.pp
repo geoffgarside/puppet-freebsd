@@ -15,10 +15,20 @@
 # Copyright 2014 Geoff Garside, unless otherwise noted.
 #
 class freebsd::mounts {
-  include ::freebsd::params
+  include ::freebsd
 
-  mount { $::freebsd::params::mount_dev_fd:
-    ensure   => 'mounted',
+  $mount_devfd = $::freebsd::mount_devfd ? {
+    true    => 'mounted',
+    default => 'absent',
+  }
+
+  $mount_procfs = $::freebsd::mount_procfs ? {
+    true    => 'mounted',
+    default => 'absent',
+  }
+
+  mount { $::freebsd::params::dev_fd:
+    ensure   => $mount_devfd,
     device   => 'fdescfs',
     fstype   => 'fdescfs',
     options  => 'rw,late',
@@ -27,8 +37,8 @@ class freebsd::mounts {
     remounts => true,
   }
 
-  mount { $::freebsd::params::mount_proc:
-    ensure   => 'mounted',
+  mount { $::freebsd::params::proc:
+    ensure   => $mount_procfs ,
     device   => 'proc',
     fstype   => 'procfs',
     options  => 'rw,late',

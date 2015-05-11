@@ -2,32 +2,60 @@
 #
 # Configures the linux /proc file system.
 class freebsd::linprocfs {
-  file { '/compat':
-    ensure => 'link',
-    target => 'usr/compat',
+  include ::freebsd::params
+
+  if $::freebsd::mount_linprocfs {
+    $link_ensure  = 'link'
+    $dir_ensure   = 'directory'
+    $mount_ensure = 'mounted'
+
+    File[$::freebsd::params::compat] ->
+    File[$::freebsd::params::usr_compat] ->
+    File[$::freebsd::params::compat_linux] ->
+    File[$::freebsd::params::compat_linux_proc] ->
+    Mount[$::freebsd::params::compat_linux]
+  } else {
+    $link_ensure  = 'absent'
+    $dir_ensure   = 'absent'
+    $mount_ensure = 'absent'
+
+    Mount[$::freebsd::params::compat_linux] ->
+    File[$::freebsd::params::compat_linux_proc] ->
+    File[$::freebsd::params::compat_linux] ->
+    File[$::freebsd::params::usr_compat] ->
+    File[$::freebsd::params::compat]
+  }
+
+  file { $::freebsd::params::compat:
+    ensure => $link_ensure,
+    target => regsubst($::freebsd::params::usr_compat, '^(/)', ''),
     owner  => 'root',
     group  => 'wheel',
-  } ->
-  file { '/usr/compat':
-    ensure => 'directory',
+  }
+
+  file { $::freebsd::params::usr_compat:
+    ensure => $dir_ensure,
     mode   => '0755',
     owner  => 'root',
     group  => 'wheel',
-  } ->
-  file { '/usr/compat/linux':
-    ensure => 'directory',
+  }
+
+  file { $::freebsd::params::compat_linux:
+    ensure => $dir_ensure,
     mode   => '0755',
     owner  => 'root',
     group  => 'wheel',
-  } ->
-  file { '/usr/compat/linux/proc':
-    ensure => 'directory',
+  }
+
+  file { $::freebsd::params::compat_linux_proc:
+    ensure => $dir_ensure,
     mode   => '0555',
     owner  => 'root',
     group  => 'wheel',
-  } ->
-  mount { '/usr/compat/linux/proc':
-    ensure   => 'mounted',
+  }
+
+  mount { $::freebsd::params::compat_linux:
+    ensure   => $mount_ensure,
     device   => 'linproc',
     fstype   => 'linprocfs',
     options  => 'rw,late',
