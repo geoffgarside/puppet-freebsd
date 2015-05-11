@@ -26,9 +26,9 @@
 #
 class freebsd::network (
   $defaultrouter       = undef,
-  $gateway_enable      = false,
+  $gateway_enable      = undef,
   $ipv6_defaultrouter  = undef,
-  $ipv6_gateway_enable = false,
+  $ipv6_gateway_enable = undef,
 ) {
   include ::stdlib
 
