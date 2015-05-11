@@ -56,6 +56,7 @@ class freebsd (
   class { '::freebsd::rcconf': } ->
   class { '::freebsd::kld_list': } ->
   class { '::freebsd::mounts': } ->
+  class { '::freebsd::linprocfs': } ->
   anchor { 'freebsd::end': }
 
   freebsd::kld { $real_kernel_modules:
