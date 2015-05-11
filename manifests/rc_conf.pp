@@ -15,6 +15,20 @@
 #   Variable value.
 #   Booleans, yes/no, on/off are converted to YES/NO.
 #   Arrays are joined by spaces.
+#
+# == Internal
+#
+# We need some kind of append mechanism. For ensure present
+# we just need a augeas expression such as
+#
+#     set ${name}[last()+1] "${value}"
+#     match ${name} "${value}"
+#
+# Though we probably need a matching expression here otherwise
+# augeas will just keep on appending the line to the config file.
+#
+# for ensure absent its a bit more complicated as we need to
+# remove the correct entry from the list of repetitions.
 define freebsd::rc_conf (
   $ensure = 'present',
   $key    = $title,
