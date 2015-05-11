@@ -54,7 +54,7 @@ class freebsd::linprocfs {
     group  => 'wheel',
   }
 
-  mount { $::freebsd::params::compat_linux:
+  mount { $::freebsd::params::compat_linux_proc:
     ensure   => $mount_ensure,
     device   => 'linproc',
     fstype   => 'linprocfs',
