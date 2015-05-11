@@ -20,7 +20,7 @@
 # Copyright 2014 Geoff Garside, unless otherwise noted.
 #
 class freebsd::klds {
-  require stdlib
+  include ::stdlib
   include ::freebsd::params
 
   if $::cpu_supports_aesni {

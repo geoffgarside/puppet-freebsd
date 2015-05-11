@@ -14,7 +14,7 @@ define freebsd::kernel_module (
   $kld    = $title,
   $ensure = 'present'
 ) {
-  require stdlib
+  include ::stdlib
   include ::freebsd
 
   file_line { "kld_list-${kld}":
