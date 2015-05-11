@@ -13,13 +13,13 @@ class freebsd::linprocfs {
     File[$::freebsd::params::usr_compat] ->
     File[$::freebsd::params::compat_linux] ->
     File[$::freebsd::params::compat_linux_proc] ->
-    Mount[$::freebsd::params::compat_linux]
+    Mount[$::freebsd::params::compat_linux_proc]
   } else {
     $link_ensure  = 'absent'
     $dir_ensure   = 'absent'
     $mount_ensure = 'absent'
 
-    Mount[$::freebsd::params::compat_linux] ->
+    Mount[$::freebsd::params::compat_linux_proc] ->
     File[$::freebsd::params::compat_linux_proc] ->
     File[$::freebsd::params::compat_linux] ->
     File[$::freebsd::params::usr_compat] ->
