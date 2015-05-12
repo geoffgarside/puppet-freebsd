@@ -33,36 +33,9 @@ class freebsd::network (
   include ::stdlib
   include ::freebsd::params
 
-  # Set a default router if we have one, don't override if undef
-  if $defaultrouter {
-    if is_ip_address($defaultrouter) {
-      freebsd::rc_conf { 'defaultrouter':
-        value => $defaultrouter
-      }
-    } else {
-      fail("defaultrouter '${defaultrouter}' is not a valid IP address")
-    }
-  }
+  anchor { 'freebsd::network::begin': } ->
+  class { '::freebsd::network::routing': } ->
+  class { '::freebsd::network::service': } ->
+  anchor { 'freebsd::network::end': }
 
-  # Set an IPv6 default router if we have one, don't override if undef
-  if $ipv6_defaultrouter {
-    if is_ip_address($ipv6_defaultrouter) {
-      freebsd::rc_conf { 'ipv6_defaultrouter':
-        value => $ipv6_defaultrouter
-      }
-    } else {
-      fail("ipv6_defaultrouter '${ipv6_defaultrouter}' is not a valid IP address")
-    }
-  }
-
-  freebsd::rc_conf {
-    'gateway_enable':      value => $gateway_enable;
-    'ipv6_gateway_enable': value => $ipv6_gateway_enable;
-  }
-
-  exec { $::freebsd::params::netif_cloneup:
-    command     => 'service netif cloneup',
-    path        => ['/bin', '/sbin', '/usr/bin', '/usr/sbin'],
-    refreshonly => true,
-  }
 }
