@@ -32,32 +32,30 @@ class freebsd::linprocfs {
     File[$::freebsd::params::compat]
   }
 
+  File {
+    owner => 'root',
+    group => 'wheel',
+    force => true,
+  }
+
   file { $::freebsd::params::compat:
     ensure => $link_ensure,
     target => regsubst($::freebsd::params::usr_compat, '^(/)', ''),
-    owner  => 'root',
-    group  => 'wheel',
   }
 
   file { $::freebsd::params::usr_compat:
     ensure => $dir_ensure,
     mode   => '0755',
-    owner  => 'root',
-    group  => 'wheel',
   }
 
   file { $::freebsd::params::compat_linux:
     ensure => $dir_ensure,
     mode   => '0755',
-    owner  => 'root',
-    group  => 'wheel',
   }
 
   file { $::freebsd::params::compat_linux_proc:
     ensure => $dir_ensure,
     mode   => '0555',
-    owner  => 'root',
-    group  => 'wheel',
   }
 
   mount { $::freebsd::params::compat_linux_proc:
