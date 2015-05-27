@@ -4,7 +4,13 @@
 class freebsd::linprocfs {
   include ::freebsd::params
 
-  if $::freebsd::mount_linprocfs {
+  if $::virtual == 'jail' {
+    $mount_linprocfs = false
+  } else {
+    $mount_linprocfs = $::freebsd::mount_linprocfs
+  }
+
+  if $mount_linprocfs {
     $link_ensure  = 'link'
     $dir_ensure   = 'directory'
     $mount_ensure = 'mounted'
